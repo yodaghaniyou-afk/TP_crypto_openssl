@@ -1,0 +1,42 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 4096 (0x1000)
+        Signature Algorithm: ecdsa-with-SHA384
+        Issuer: C=BF, O=Universite TP, CN=Racine TP
+        Validity
+            Not Before: Oct 27 03:32:44 2026 GMT
+            Not After : Oct 26 03:32:44 2031 GMT
+        Subject: C=BF, O=Universite TP, CN=Intermediaire TP
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                pub:
+                    04:7d:76:5c:7c:74:c3:ba:3b:32:e9:70:05:03:e1:
+                    47:b2:57:fb:2a:b4:23:20:ed:8f:7c:6f:45:7d:27:
+                    9f:58:6e:55:05:46:d9:c3:93:e0:a0:fd:c1:21:67:
+                    0f:38:35:75:82:93:2f:5c:73:ab:54:17:dc:3f:d5:
+                    15:70:58:bb:73
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:TRUE, pathlen:0
+            X509v3 Key Usage: critical
+                Certificate Sign, CRL Sign
+            X509v3 Subject Key Identifier: 
+                B8:A1:92:D3:7B:C4:AA:2D:28:D5:22:D9:43:DB:5C:87:2C:B6:04:FA
+            X509v3 Authority Key Identifier: 
+                CD:90:5D:4C:B0:BA:6B:FE:4C:8C:37:9B:D3:EB:61:9B:C7:D5:53:D2
+            X509v3 Name Constraints: critical
+                Permitted:
+                  DNS:tp.local
+                  email:tp.local
+    Signature Algorithm: ecdsa-with-SHA384
+    Signature Value:
+        30:65:02:30:66:36:64:bc:45:8b:32:d0:08:f0:51:e4:81:13:
+        aa:15:32:65:5f:fd:d1:6a:61:06:a7:1d:32:cf:50:5c:ee:e1:
+        d3:a6:96:bc:7a:be:b5:58:a5:5e:79:91:8c:7d:b6:30:02:31:
+        00:fb:1e:2e:c5:fe:9c:72:ba:99:91:c7:c7:fc:ea:48:8a:6b:
+        3a:c4:f3:9d:81:b0:ff:31:70:71:0a:b8:36:8a:5b:a0:6c:82:
+        d9:9e:8a:11:e0:9a:e5:da:8a:7d:87:e4:b8

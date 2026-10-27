@@ -1,0 +1,53 @@
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 4096 (0x1000)
+        Signature Algorithm: ecdsa-with-SHA256
+        Issuer: C=BF, O=Universite TP, CN=Intermediaire TP
+        Validity
+            Not Before: Oct 27 03:48:47 2026 GMT
+            Not After : Jan 25 03:48:47 2027 GMT
+        Subject: CN=www.tp.local
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                pub:
+                    04:3b:7e:b6:fb:18:ac:ea:49:37:b4:84:47:fe:bd:
+                    ad:c7:58:3d:dd:36:be:be:13:53:c1:b7:26:6b:8f:
+                    11:06:9e:8e:62:c3:f8:f5:5a:38:f8:ff:f3:e1:1c:
+                    2c:c4:ba:56:4f:65:38:73:c5:85:ed:b2:58:e0:fe:
+                    4f:79:b3:11:ff
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Key Usage: critical
+                Digital Signature
+            X509v3 Extended Key Usage: 
+                TLS Web Server Authentication
+            X509v3 Subject Key Identifier: 
+                C4:9C:7E:15:5D:AF:7E:42:F2:60:68:9E:90:2C:64:B0:64:29:AC:A7
+            X509v3 Authority Key Identifier: 
+                B8:A1:92:D3:7B:C4:AA:2D:28:D5:22:D9:43:DB:5C:87:2C:B6:04:FA
+            X509v3 Subject Alternative Name: 
+                DNS:www.tp.local, DNS:tp.local
+    Signature Algorithm: ecdsa-with-SHA256
+    Signature Value:
+        30:45:02:21:00:c5:62:64:69:8b:1e:e9:50:4c:e3:13:50:65:
+        bc:3a:e6:e9:00:41:d9:4a:5c:02:db:ef:df:5e:ec:c4:f0:d1:
+        b9:02:20:0b:7e:12:f6:4b:a6:a8:7a:bb:14:a3:da:b3:88:7c:
+        fc:35:46:8e:15:6b:70:1e:cb:25:19:04:f1:61:73:f6:3e
+-----BEGIN CERTIFICATE-----
+MIIB4TCCAYegAwIBAgICEAAwCgYIKoZIzj0EAwIwQDELMAkGA1UEBhMCQkYxFjAU
+BgNVBAoMDVVuaXZlcnNpdGUgVFAxGTAXBgNVBAMMEEludGVybWVkaWFpcmUgVFAw
+HhcNMjYxMDI3MDM0ODQ3WhcNMjcwMTI1MDM0ODQ3WjAXMRUwEwYDVQQDDAx3d3cu
+dHAubG9jYWwwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQ7frb7GKzqSTe0hEf+
+va3HWD3dNr6+E1PBtyZrjxEGno5iw/j1Wjj4//PhHCzEulZPZThzxYXtsljg/k95
+sxH/o4GZMIGWMAwGA1UdEwEB/wQCMAAwDgYDVR0PAQH/BAQDAgeAMBMGA1UdJQQM
+MAoGCCsGAQUFBwMBMB0GA1UdDgQWBBTEnH4VXa9+QvJgaJ6QLGSwZCmspzAfBgNV
+HSMEGDAWgBS4oZLTe8SqLSjVItlD21yHLLYE+jAhBgNVHREEGjAYggx3d3cudHAu
+bG9jYWyCCHRwLmxvY2FsMAoGCCqGSM49BAMCA0gAMEUCIQDFYmRpix7pUEzjE1Bl
+vDrm6QBB2UpcAtvv317sxPDRuQIgC34S9kumqHq7FKPas4h8/DVGjhVrcB7LJRkE
+8WFz9j4=
+-----END CERTIFICATE-----

@@ -1,0 +1,6 @@
+# SECURITE : aucune cle privee dans le depot
+*.key
+private/
+
+# Dossier de travail PKI (cles privees, bases de l'AC, numeros de serie)
+work/

@@ -1,0 +1,35 @@
+=== Base de l'intermediaire (R = revoque, V = valide) ===
+V	270125034847Z		1000	unknown	/CN=www.tp.local
+R	270125035009Z	261028015742Z,keyCompromise	1001	unknown	/CN=alice@tp.local
+V	270126014913Z		1002	unknown	/CN=www.example.com
+
+=== Test 1 : alice.crt avec verification des CRL (attendu : revoque) ===
+CN=alice@tp.local
+error 23 at 0 depth lookup: certificate revoked
+error alice.crt: verification failed
+
+=== Test 2 (controle) : serveur.crt avec verification des CRL (attendu : OK) ===
+serveur.crt: OK
+
+=== CRL de l'intermediaire ===
+Certificate Revocation List (CRL):
+        Version 2 (0x1)
+        Signature Algorithm: ecdsa-with-SHA256
+        Issuer: C=BF, O=Universite TP, CN=Intermediaire TP
+        Last Update: Oct 28 02:00:14 2026 GMT
+        Next Update: Nov 27 02:00:14 2026 GMT
+        CRL extensions:
+            X509v3 CRL Number: 
+                4096
+Revoked Certificates:
+    Serial Number: 1001
+        Revocation Date: Oct 28 01:57:42 2026 GMT
+        CRL entry extensions:
+            X509v3 CRL Reason Code: 
+                Key Compromise
+    Signature Algorithm: ecdsa-with-SHA256
+    Signature Value:
+        30:46:02:21:00:f9:86:1f:36:91:bc:85:c5:0e:09:c8:18:49:
+        dd:58:71:4d:36:c5:36:da:b1:70:e1:37:09:6b:7f:22:6e:91:
+        a0:02:21:00:fd:4a:a5:a2:85:f4:9a:bf:46:9c:ac:39:8f:d2:
+        a3:cb:0c:e9:b5:96:01:03:1e:ff:34:19:3d:62:21:54:a1:2b

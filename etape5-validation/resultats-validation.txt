@@ -1,0 +1,15 @@
+=== Test 1 : serveur.crt, nom www.tp.local (attendu : OK) ===
+serveur.crt: OK
+
+=== Test 2 : serveur.crt, nom autre.example (attendu : echec) ===
+CN=www.tp.local
+error 62 at 0 depth lookup: hostname mismatch
+error serveur.crt: verification failed
+
+=== Test 3 : alice.crt, usage client (attendu : OK) ===
+alice.crt: OK
+
+=== Test 4 : exemple.crt, www.example.com hors tp.local (attendu : echec) ===
+CN=www.example.com
+error 47 at 0 depth lookup: permitted subtree violation
+error exemple.crt: verification failed

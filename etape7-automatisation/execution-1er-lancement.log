@@ -8,7 +8,7 @@ The Subject's Distinguished Name is as follows
 countryName           :PRINTABLE:'BF'
 organizationName      :ASN.1 12:'Universite TP'
 commonName            :ASN.1 12:'Intermediaire TP'
-Certificate is to be certified until Oct 27 02:06:14 2031 GMT (1825 days)
+Certificate is to be certified until Oct 29 21:44:08 2031 GMT (1825 days)
 
 Write out database with 1 new entries
 Database updated
@@ -18,17 +18,17 @@ Check that the request matches the signature
 Signature ok
 The Subject's Distinguished Name is as follows
 commonName            :ASN.1 12:'www.tp.local'
-Certificate is to be certified until Jan 26 02:06:14 2027 GMT (90 days)
+Certificate is to be certified until Jan 28 21:44:08 2027 GMT (90 days)
 
 Write out database with 1 new entries
 Database updated
-==> Etape 4 : certificat du client alice@tp.local
+==> Etape 4 : certificat du client alice@tp.local (SAN ajoute par ext_client)
 Using configuration from inter.cnf
 Check that the request matches the signature
 Signature ok
 The Subject's Distinguished Name is as follows
 commonName            :ASN.1 12:'alice@tp.local'
-Certificate is to be certified until Jan 26 02:06:14 2027 GMT (90 days)
+Certificate is to be certified until Jan 28 21:44:08 2027 GMT (90 days)
 
 Write out database with 1 new entries
 Database updated

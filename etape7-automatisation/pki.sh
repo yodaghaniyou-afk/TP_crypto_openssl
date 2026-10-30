@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # pki.sh : automatise les etapes 2 a 4 du TP2 (racine, intermediaire, serveur, client)
+# Utilise les fichiers de configuration de l'annexe B (dossier etape1-configuration)
 # Usage : bash pki.sh [dossier_de_travail]
 # Par defaut, tout est construit dans ../work/pki-auto (exclu de Git)
 set -euo pipefail
@@ -21,9 +22,10 @@ done
 echo "==> Preparation de $BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
-mkdir -p racine/newcerts racine/crl inter/newcerts inter/crl
+mkdir -p racine/{certs,crl,newcerts} inter/{certs,crl,newcerts}
 touch racine/index.txt inter/index.txt
-echo 1000 | tee racine/serial inter/serial racine/crlnumber inter/crlnumber > /dev/null
+echo 1000 | tee racine/serial racine/crlnumber > /dev/null
+echo 2000 | tee inter/serial inter/crlnumber > /dev/null
 cp "$CONF_DIR/racine.cnf" "$CONF_DIR/inter.cnf" .
 
 echo "==> Etape 2 : AC racine (P-384, 10 ans)"
@@ -51,11 +53,10 @@ openssl req -new -key serveur.key -subj "/CN=www.tp.local" \
 openssl ca -batch -config inter.cnf -extensions ext_serveur -days 90 \
   -in serveur.csr -out serveur.crt
 
-echo "==> Etape 4 : certificat du client alice@tp.local"
+echo "==> Etape 4 : certificat du client alice@tp.local (SAN ajoute par ext_client)"
 openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-256 -out alice.key
 chmod 600 alice.key
-openssl req -new -key alice.key -subj "/CN=alice@tp.local" \
-  -addext "subjectAltName=email:alice@tp.local" -out alice.csr
+openssl req -new -key alice.key -subj "/CN=alice@tp.local" -out alice.csr
 openssl ca -batch -config inter.cnf -extensions ext_client -days 90 \
   -in alice.csr -out alice.crt
 

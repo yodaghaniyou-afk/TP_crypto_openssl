@@ -1,3 +1,14 @@
+=== Emission du certificat de test www.example.com (signature attendue : OK) ===
+Using configuration from inter.cnf
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'www.example.com'
+Certificate is to be certified until Jan 28 21:33:48 2027 GMT (90 days)
+
+Write out database with 1 new entries
+Database updated
+
 === Test 1 : serveur.crt, nom www.tp.local (attendu : OK) ===
 serveur.crt: OK
 

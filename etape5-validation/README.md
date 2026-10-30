@@ -4,8 +4,11 @@
 Exécuter et interpréter les validations demandées par le sujet : un certificat de serveur avec le bon puis un mauvais nom, un certificat de client avec l'usage « client TLS », et un certificat hors du domaine autorisé par les contraintes de nom de l'intermédiaire.
 
 ## Prérequis
-- Étapes 1 à 4 réalisées
+- Étapes 1 à 4 réalisées (configuration de l'annexe B)
 - Commandes lancées depuis `~/TP_crypto_openssl/work`
+
+## Remarque
+Ces validations ont été rejouées avec l'intermédiaire, le serveur et le client émis avec les fichiers de l'annexe B. Elles remplacent celles d'une première version.
 
 ## Commandes exécutées
     # Test 1 : serveur, bon nom (attendu : OK)
@@ -39,25 +42,26 @@ Exécuter et interpréter les validations demandées par le sujet : un certifica
 ## Fichiers de ce dossier
 | Fichier | Rôle |
 |---|---|
-| `resultats-validation.txt` | Sorties réelles des 4 validations, enregistrées par un script |
+| `resultats-validation.txt` | Sorties réelles de l'émission du certificat de test et des 4 validations, enregistrées par un script |
 
 Les fichiers du test 4 (`exemple.key`, `exemple.csr`, `exemple.crt`) restent dans `work/` : ce sont des fichiers de test, pas des livrables.
 
 ## Résultats observés
 | Test | Commande (résumé) | Résultat obtenu | Attendu |
 |---|---|---|---|
+| Émission | `ca -config inter.cnf -extensions ext_serveur` pour `www.example.com` | `Signature ok`, `(90 days)`, `Database updated` (série 2002) | signature réussie |
 | 1 | `verify -verify_hostname www.tp.local serveur.crt` | `serveur.crt: OK` | OK |
 | 2 | `verify -verify_hostname autre.example serveur.crt` | `error 62 at 0 depth lookup: hostname mismatch` puis `verification failed` | échec |
 | 3 | `verify -purpose sslclient alice.crt` | `alice.crt: OK` | OK |
 | 4 | `verify exemple.crt` (`www.example.com`) | `error 47 at 0 depth lookup: permitted subtree violation` puis `verification failed` | échec |
 
-Le détail complet est dans `resultats-validation.txt`. Lors de l'émission du test 4, `openssl ca` a affiché `Signature ok`, `Certificate is to be certified until ... (90 days)` et `Database updated` : la signature a réussi.
+Le détail complet est dans `resultats-validation.txt`. La base de l'intermédiaire contient trois lignes `V` : `www.tp.local` (série 2000), `alice@tp.local` (série 2001) et `www.example.com` (série 2002).
 
 ## Interprétation
 - **Test 1 : OK.** La chaîne `serveur.crt` → intermédiaire → racine est valide : chaque signature est correcte, les dates sont valides, la racine est l'ancre de confiance, et le nom `www.tp.local` figure dans les noms alternatifs.
-- **Test 2 : `error 62`.** La chaîne est identique, mais `autre.example` ne figure dans aucun nom alternatif du certificat. Le certificat est donc refusé pour ce nom. Un client vérifie le nom du serveur en plus de la signature.
+- **Test 2 : `error 62`.** La chaîne est identique, mais `autre.example` ne figure dans aucun nom alternatif du certificat. Le certificat est refusé pour ce nom : un client vérifie le nom du serveur en plus de la signature.
 - **Test 3 : OK.** Le certificat d'Alice porte l'extension `TLS Web Client Authentication` : il est utilisable comme certificat de client TLS.
-- **Test 4 : `error 47`.** Le certificat de `www.example.com` est correctement signé par l'intermédiaire, mais le nom sort des noms autorisés par la contrainte `permitted;DNS:tp.local` de l'intermédiaire. La validation le refuse, avec `at 0 depth` : l'erreur est relevée sur le certificat final.
+- **Test 4 : `error 47`.** Le certificat de `www.example.com` est correctement signé par l'intermédiaire, mais son nom sort des noms autorisés par le certificat de l'intermédiaire (`DNS:.tp.local`, `DNS:tp.local`, `email:tp.local`). La validation le refuse, avec `at 0 depth` : l'erreur est relevée sur le certificat final.
 
 ## Réponse à la question du sujet
 **Pourquoi l'AC a-t-elle pu signer ce certificat alors qu'il est refusé à la validation ?**

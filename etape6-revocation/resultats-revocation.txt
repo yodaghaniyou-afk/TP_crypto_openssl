@@ -1,7 +1,16 @@
+=== Revocation de alice.crt (serie 2001) ===
+Using configuration from inter.cnf
+Revoking Certificate 2001.
+Database updated
+
+=== Generation des CRL (intermediaire et racine) ===
+Using configuration from inter.cnf
+Using configuration from racine.cnf
+
 === Base de l'intermediaire (R = revoque, V = valide) ===
-V	270125034847Z		1000	unknown	/CN=www.tp.local
-R	270125035009Z	261028015742Z,keyCompromise	1001	unknown	/CN=alice@tp.local
-V	270126014913Z		1002	unknown	/CN=www.example.com
+V	270128100731Z		2000	unknown	/CN=www.tp.local
+R	270128100731Z	261030213909Z,keyCompromise	2001	unknown	/CN=alice@tp.local
+V	270128213348Z		2002	unknown	/CN=www.example.com
 
 === Test 1 : alice.crt avec verification des CRL (attendu : revoque) ===
 CN=alice@tp.local
@@ -16,20 +25,40 @@ Certificate Revocation List (CRL):
         Version 2 (0x1)
         Signature Algorithm: ecdsa-with-SHA256
         Issuer: C=BF, O=Universite TP, CN=Intermediaire TP
-        Last Update: Oct 28 02:00:14 2026 GMT
-        Next Update: Nov 27 02:00:14 2026 GMT
+        Last Update: Oct 30 21:39:09 2026 GMT
+        Next Update: Nov  6 21:39:09 2026 GMT
         CRL extensions:
             X509v3 CRL Number: 
-                4096
+                8192
 Revoked Certificates:
-    Serial Number: 1001
-        Revocation Date: Oct 28 01:57:42 2026 GMT
+    Serial Number: 2001
+        Revocation Date: Oct 30 21:39:09 2026 GMT
         CRL entry extensions:
             X509v3 CRL Reason Code: 
                 Key Compromise
     Signature Algorithm: ecdsa-with-SHA256
     Signature Value:
-        30:46:02:21:00:f9:86:1f:36:91:bc:85:c5:0e:09:c8:18:49:
-        dd:58:71:4d:36:c5:36:da:b1:70:e1:37:09:6b:7f:22:6e:91:
-        a0:02:21:00:fd:4a:a5:a2:85:f4:9a:bf:46:9c:ac:39:8f:d2:
-        a3:cb:0c:e9:b5:96:01:03:1e:ff:34:19:3d:62:21:54:a1:2b
+        30:45:02:20:51:c0:22:d8:64:a4:0c:1a:00:8c:85:59:e1:fc:
+        c0:1d:61:8f:4d:ca:53:ba:1f:d3:b2:d5:5a:17:49:d2:8d:90:
+        02:21:00:9a:3c:00:aa:40:de:5b:b1:71:43:78:4c:0e:df:23:
+        ca:e5:2c:7c:a9:ff:3d:d9:c2:24:4b:b5:22:91:92:a5:38
+
+=== CRL de la racine ===
+Certificate Revocation List (CRL):
+        Version 2 (0x1)
+        Signature Algorithm: ecdsa-with-SHA384
+        Issuer: C=BF, O=Universite TP, CN=Racine TP
+        Last Update: Oct 30 21:39:09 2026 GMT
+        Next Update: Nov 29 21:39:09 2026 GMT
+        CRL extensions:
+            X509v3 CRL Number: 
+                4096
+No Revoked Certificates.
+    Signature Algorithm: ecdsa-with-SHA384
+    Signature Value:
+        30:65:02:30:31:7a:53:0a:5b:f1:f8:0e:c7:4c:83:12:b2:8e:
+        b7:8b:3a:bb:0e:1b:2e:18:f2:61:27:d2:a6:06:55:34:12:8d:
+        8b:0e:2f:7f:f7:fc:15:cc:2a:b1:70:e0:51:35:4e:5a:02:31:
+        00:99:9f:c8:40:69:56:75:76:06:68:9e:96:16:f2:99:88:4e:
+        b6:5f:2f:9f:65:d1:9f:db:d2:78:ca:8c:61:36:6b:20:06:f8:
+        f0:ff:f8:8f:4c:46:d6:0a:91:30:7a:be:c1

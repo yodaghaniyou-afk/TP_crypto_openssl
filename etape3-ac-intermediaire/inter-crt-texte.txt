@@ -5,18 +5,18 @@ Certificate:
         Signature Algorithm: ecdsa-with-SHA384
         Issuer: C=BF, O=Universite TP, CN=Racine TP
         Validity
-            Not Before: Oct 27 03:32:44 2026 GMT
-            Not After : Oct 26 03:32:44 2031 GMT
+            Not Before: Oct 30 10:04:54 2026 GMT
+            Not After : Oct 29 10:04:54 2031 GMT
         Subject: C=BF, O=Universite TP, CN=Intermediaire TP
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey
                 Public-Key: (256 bit)
                 pub:
-                    04:7d:76:5c:7c:74:c3:ba:3b:32:e9:70:05:03:e1:
-                    47:b2:57:fb:2a:b4:23:20:ed:8f:7c:6f:45:7d:27:
-                    9f:58:6e:55:05:46:d9:c3:93:e0:a0:fd:c1:21:67:
-                    0f:38:35:75:82:93:2f:5c:73:ab:54:17:dc:3f:d5:
-                    15:70:58:bb:73
+                    04:e0:a4:88:a1:f0:ac:b2:e9:23:38:19:70:0f:66:
+                    6b:94:60:a9:e6:33:87:b0:5f:75:9f:5e:c8:fa:e8:
+                    e5:34:cb:16:36:fb:b1:be:77:13:1a:68:d1:c7:84:
+                    46:33:86:39:93:36:a4:61:64:f9:33:4f:b0:9d:60:
+                    cb:fd:8f:65:24
                 ASN1 OID: prime256v1
                 NIST CURVE: P-256
         X509v3 extensions:
@@ -24,19 +24,20 @@ Certificate:
                 CA:TRUE, pathlen:0
             X509v3 Key Usage: critical
                 Certificate Sign, CRL Sign
-            X509v3 Subject Key Identifier: 
-                B8:A1:92:D3:7B:C4:AA:2D:28:D5:22:D9:43:DB:5C:87:2C:B6:04:FA
-            X509v3 Authority Key Identifier: 
-                CD:90:5D:4C:B0:BA:6B:FE:4C:8C:37:9B:D3:EB:61:9B:C7:D5:53:D2
             X509v3 Name Constraints: critical
                 Permitted:
+                  DNS:.tp.local
                   DNS:tp.local
                   email:tp.local
+            X509v3 Subject Key Identifier: 
+                E7:47:30:0D:4E:73:A1:3D:C4:DC:BC:57:5B:2E:37:F3:D6:1F:1E:97
+            X509v3 Authority Key Identifier: 
+                CD:90:5D:4C:B0:BA:6B:FE:4C:8C:37:9B:D3:EB:61:9B:C7:D5:53:D2
     Signature Algorithm: ecdsa-with-SHA384
     Signature Value:
-        30:65:02:30:66:36:64:bc:45:8b:32:d0:08:f0:51:e4:81:13:
-        aa:15:32:65:5f:fd:d1:6a:61:06:a7:1d:32:cf:50:5c:ee:e1:
-        d3:a6:96:bc:7a:be:b5:58:a5:5e:79:91:8c:7d:b6:30:02:31:
-        00:fb:1e:2e:c5:fe:9c:72:ba:99:91:c7:c7:fc:ea:48:8a:6b:
-        3a:c4:f3:9d:81:b0:ff:31:70:71:0a:b8:36:8a:5b:a0:6c:82:
-        d9:9e:8a:11:e0:9a:e5:da:8a:7d:87:e4:b8
+        30:65:02:30:6d:01:f9:71:0e:2a:1d:05:45:29:7c:52:18:2a:
+        b5:0d:a2:e8:ac:53:ed:33:67:81:66:c8:36:20:bc:28:3d:86:
+        ac:6a:76:80:e8:99:f9:8b:13:6c:77:c2:90:3f:d7:bc:02:31:
+        00:81:00:2d:8e:0f:0d:8a:dd:7c:18:eb:c5:8f:b4:a0:50:f7:
+        b6:8d:db:24:0c:82:ec:fd:c4:ef:d7:63:32:c2:82:aa:b0:cb:
+        67:55:9c:1b:aa:bd:04:a7:4c:cf:7a:2b:92

@@ -29,7 +29,7 @@ Les clients modernes vérifient le **SAN** (noms alternatifs du sujet). Le CN es
 
 **Limites des CRL :**
 - La liste grossit avec le nombre de révocations et doit être téléchargée en entier.
-- Sa fraîcheur dépend de la périodicité de publication : ici la CRL est valable 30 jours, donc une révocation récente peut passer inaperçue d'un client qui garde une ancienne copie.
+- Sa fraîcheur dépend de la périodicité de publication : dans cette infrastructure, la CRL de l'intermédiaire est valable 7 jours (`default_crl_days = 7`) et celle de la racine 30 jours. Un client qui garde une ancienne copie peut donc ignorer une révocation récente jusqu'à la fin de validité de sa copie (jusqu'à 7 jours ici).
 - Le client doit pouvoir la récupérer, et beaucoup de clients acceptent le certificat si la CRL est introuvable.
 
 **OCSP** (Online Certificate Status Protocol) : le client demande l'état d'un seul certificat à un répondeur. La réponse est petite et à jour. En contrepartie, le répondeur doit être disponible, il apprend quels certificats le client consulte (confidentialité), et si le répondeur ne répond pas, les clients acceptent souvent le certificat quand même. L'agrafage OCSP (le serveur joint lui-même la réponse signée) atténue ces défauts.
@@ -46,5 +46,5 @@ Les clients modernes vérifient le **SAN** (noms alternatifs du sujet). Le CN es
 6. **Intermédiaire :** P-256, validité 5 ans, `pathlen:0`, contraintes de nom `tp.local` ; seule autorité qui signe les certificats finaux.
 7. **Certificats finaux :** validité maximale de 90 jours, usage limité (serveur TLS ou client TLS), renouvelés avant expiration.
 8. **Révocation :** à la demande du titulaire ou de l'administrateur dès qu'une compromission de clé est suspectée ou en fin d'usage, avec le motif consigné.
-9. **Publication :** après chaque révocation, l'AC régénère et publie sa CRL aussitôt ; validité maximale d'une CRL : 30 jours.
+9. **Publication :** après chaque révocation, l'AC régénère et publie sa CRL aussitôt ; validité maximale d'une CRL : 7 jours pour l'intermédiaire, 30 jours pour la racine.
 10. **Traçabilité :** chaque émission et chaque révocation est enregistrée (base `index.txt`) ; l'AC ne conserve aucune clé privée de certificat final, et aucune clé privée n'est publiée dans un dépôt.

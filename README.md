@@ -17,7 +17,7 @@ Construire une infrastructure de gestion de clés (PKI) avec OpenSSL : AC racine
 | Élément | Clé et durée | Extensions essentielles |
 |---|---|---|
 | AC racine | P-384, 10 ans | CA:TRUE, pathlen:1 ; keyCertSign, cRLSign |
-| AC intermédiaire | P-256, 5 ans | CA:TRUE, pathlen:0 ; contraintes de nom : DNS:tp.local et email:tp.local |
+| AC intermédiaire | P-256, 5 ans | CA:TRUE, pathlen:0 ; contraintes de nom : DNS:.tp.local, DNS:tp.local et email:tp.local |
 | Serveur `www.tp.local` | P-256, 90 jours | CA:FALSE ; serverAuth ; SAN : www.tp.local et tp.local |
 | Client `alice@tp.local` | P-256, 90 jours | CA:FALSE ; clientAuth ; SAN : alice@tp.local |
 
@@ -64,15 +64,15 @@ Suivre les README des dossiers `etape1` à `etape6`, dans l'ordre. Les commandes
 | Élément | Résultat observé |
 |---|---|
 | Racine | Auto-signée (émetteur = sujet), P-384, ecdsa-with-SHA384, du 27 oct 2026 au 24 oct 2036 |
-| Intermédiaire | Signée par la racine, P-256, du 27 oct 2026 au 26 oct 2031, `CA:TRUE, pathlen:0`, contraintes de nom critiques |
+| Intermédiaire | Signée par la racine, P-256, du 30 oct 2026 au 29 oct 2031, `CA:TRUE, pathlen:0`, contraintes de nom critiques (`DNS:.tp.local`, `DNS:tp.local`, `email:tp.local`) |
 | Serveur et client | Signés par l'intermédiaire, 90 jours, `CA:FALSE`, usages `serverAuth` et `clientAuth` |
 | Validations (étape 5) | Bon nom : OK ; mauvais nom : `hostname mismatch` ; client : OK ; hors `tp.local` : `permitted subtree violation` |
-| Révocation (étape 6) | Certificat d'Alice (série 1001) révoqué (`keyCompromise`) ; refusé avec `certificate revoked` ; certificat du serveur toujours accepté |
+| Révocation (étape 6) | Certificat d'Alice (série 2001) révoqué (`keyCompromise`) ; refusé avec `certificate revoked` ; certificat du serveur toujours accepté ; CRL de l'intermédiaire valable 7 jours, celle de la racine 30 jours |
 | Script (étape 7) | 1er lancement : code 0, chaînes valides ; 2e lancement : code 1, refus d'écraser une PKI existante |
 
 ## Remarques sur le sujet
-- L'annexe B (fichiers de configuration fournis) ne figurait pas dans le PDF reçu : `racine.cnf` et `inter.cnf` ont été rédigés d'après le tableau d'architecture de la section 3.2.
-- Le sujet ne détaille pas la clé et la CSR de l'intermédiaire, ni les commandes du client Alice : elles sont adaptées de celles du serveur.
+- Les fichiers de configuration `racine.cnf` et `inter.cnf` sont ceux de l'annexe B du sujet, recopiés à partir du texte du PDF. Reçue après le début du travail, l'annexe a conduit à refaire les étapes 3 à 7 avec ces fichiers ; la racine (étape 2), qui n'en dépend pas, a été conservée.
+- Le sujet ne détaille pas la clé et la CSR de l'intermédiaire, ni les commandes du client Alice : elles sont adaptées de celles du serveur (la CSR d'Alice est créée sans noms alternatifs, l'adresse `email:alice@tp.local` étant ajoutée par `ext_client`).
 - Ajouts personnels : `chmod 600` sur les clés privées, un test de contrôle à l'étape 6 (le certificat du serveur reste valide après la révocation d'Alice), et un certificat de test `www.example.com` pour l'étape 5.
 
 ## Sécurité
